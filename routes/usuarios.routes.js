@@ -1,5 +1,6 @@
 const { Router } = require ('express');
 const router  = Router();
+const chkToken = require ('../middlewares/auth.middleware');
 const{
     usuariosGet,
     usuariosPost,
@@ -7,7 +8,7 @@ const{
     usuariosDelete
 } = require ('../controllers/usuarios.controller');
 
-router.get('/usuarios', usuariosGet);
+router.get('/usuarios', chkToken, usuariosGet);
 
 router.post('/usuarios', usuariosPost);
 
